@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>K’ak’ · Chocolate de Guatemala</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="K’ak’ es una colección de chocolates para bebida inspirada en la fuerza de los volcanes y la sabiduría ancestral de Guatemala."
+  />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* ========== RESET BÁSICO ========== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Work Sans", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: #211713;
+      background-color: #f7f1ea;
+      line-height: 1.6;
+    }
+
+    /* ========== VARIABLES ========== */
+    :root {
+      --cacao: #3a271d;
+      --cacao-deep: #241510;
+      --cream: #f7f1ea;
+      --cream-soft: #f1e5d7;
+      --accent: #c46a3b; /* terracotta */
+      --accent-soft: rgba(196, 106, 59, 0.12);
+      --text-muted: #7c6457;
+      --border-soft: rgba(0, 0, 0, 0.08);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.14);
+    }
+
+    /* ========== UTILIDADES ========== */
+    .container {
+      width: min(1120px, 100% - 2.5rem);
+      margin: 0 auto;
+    }
+
+    /* ========== HEADER ========== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(247, 241, 234, 0.92),
+        rgba(247, 241, 234, 0.8)
+      );
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand-mark {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      color: var(--cacao-deep);
+    }
+
+    .brand-sub {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), #e29b5f);
+      transition: width 0.18s ease-out;
+    }
+
+    .main-nav a:hover::after,
+    .main-nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    /* ========== SECCIONES GENERALES ========== */
+    .section {
+      padding: 4.5rem 0;
+    }
+
+    .section-dark {
+      background: radial-gradient(circle at top, #4b3426, var(--cacao-deep));
+      color: #f9f4ee;
+    }
+
+    .section-light {
+      background-color: #f9f4ee;
+    }
+
+    .section-cream {
+      background-color: var(--cream-soft);
+    }
+
+    .section-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      max-width: 34rem;
+    }
+
+    .section-dark .section-header p {
+      color: #f3e0d2;
+    }
+
+    .section-header-center {
+      text-align: center;
+    }
+
+    .section-header-center p {
+      margin: 0 auto;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding-top: 5.25rem;
+      padding-bottom: 4.75rem;
+      background: radial-gradient(circle at top left, #fbe8d3, #f7f1ea);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .hero-tag {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.4rem, 3.1vw + 1.2rem, 3rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      color: var(--cacao-deep);
+    }
+
+    .hero-highlight {
+      display: block;
+      font-size: 0.9em;
+      color: var(--accent);
+    }
+
+    .hero-lead {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-lead-en {
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.14s ease, box-shadow 0.14s ease,
+        background 0.14s ease, border-color 0.14s ease, color 0.14s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--cacao), var(--cacao-deep));
+      color: #fdf7f0;
+      box-shadow: 0 12px 26px rgba(26, 14, 8, 0.35);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(26, 14, 8, 0.45);
+    }
+
+    .btn.ghost {
+      background: transparent;
+      color: var(--cacao);
+      border-color: rgba(58, 39, 29, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn.ghost:hover {
+      background: rgba(58, 39, 29, 0.03);
+    }
+
+    .hero-media {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-image-frame {
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: radial-gradient(circle at top, #f9e0c0, #d3b296);
+      padding: 1.1rem;
+    }
+
+    .hero-image-frame img {
+      display: block;
+      border-radius: 22px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .hero-caption {
+      font-size: 0.8rem;
+      margin-top: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ========== ORIGEN ========== */
+    .origin-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .origin-text p + p {
+      margin-top: 0.75rem;
+    }
+
+    .origin-keywords {
+      margin-top: 1.5rem;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+    }
+
+    .origin-icons {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .origin-icon-card {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      padding: 0.9rem 1rem;
+      background: #fdf7f0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .icon-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ========== FÓRMULAS ========== */
+    .formula-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .formula-card {
+      perspective: 1100px;
+    }
+
+    .formula-inner {
+      position: relative;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(0, 0, 0, 0.3)
+      );
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 1.2rem 1.25rem 1.4rem;
+      min-height: 260px;
+      transform-style: preserve-3d;
+      transition: transform 0.35s ease;
+      cursor: pointer;
+    }
+
+    .formula-card:hover .formula-inner {
+      transform: rotateY(-10deg) translateY(-4px);
+    }
+
+    .formula-card.flipped .formula-inner {
+      transform: rotateY(180deg);
+    }
+
+    .formula-face {
+      position: absolute;
+      inset: 0;
+      padding: 1.2rem 1.25rem 1.4rem;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .formula-front {
+      z-index: 2;
+    }
+
+    .formula-back {
+      transform: rotateY(180deg);
+    }
+
+    .formula-pill {
+      align-self: flex-start;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(249, 237, 220, 0.1);
+      border: 1px solid rgba(249, 237, 220, 0.5);
+      margin-bottom: 0.5rem;
+    }
+
+    .formula-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .formula-tagline {
+      font-size: 0.85rem;
+      color: #f3d3b5;
+      margin-bottom: 0.6rem;
+    }
+
+    .formula-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.7rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .formula-list li {
+      font-size: 0.82rem;
+      padding: 0.1rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(246, 225, 196, 0.45);
+    }
+
+    .formula-text {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .formula-mood {
+      font-size: 0.86rem;
+      color: #f1d9bf;
+    }
+
+    .formula-hint {
+      font-size: 0.75rem;
+      color: rgba(249, 229, 204, 0.75);
+      margin-top: 0.5rem;
+    }
+
+    .formula-back h4 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .formula-notes {
+      list-style: disc;
+      padding-left: 1rem;
+      font-size: 0.88rem;
+    }
+
+    /* ========== RITUAL / PASOS ========== */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .step-card {
+      background: #fdf7f0;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      padding: 1.2rem 1.1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at top left,
+        rgba(196, 106, 59, 0.18),
+        transparent
+      );
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .step-card:hover::before {
+      opacity: 1;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      display: grid;
+      place-items: center;
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .step-card h3 {
+      font-family: "Playfair Display", serif;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ========== INGREDIENTES / MAPA ========== */
+    .ingredients-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .map-placeholder {
+      border-radius: 999px;
+      border: 1px dashed rgba(0, 0, 0, 0.22);
+      height: 220px;
+      display: grid;
+      place-items: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(242, 222, 198, 0.3),
+        rgba(242, 222, 198, 0.3) 8px,
+        transparent 8px,
+        transparent 16px
+      );
+    }
+
+    .map-label {
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: #fdf7f0;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+    }
+
+    .ingredients-cards {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .ingredient-card {
+      background: #fdf7f0;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      padding: 0.9rem 1rem;
+    }
+
+    /* ========== PARA QUIÉN ========== */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .audience-card {
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: radial-gradient(
+        circle at top left,
+        rgba(255, 255, 255, 0.06),
+        transparent
+      );
+      padding: 1.1rem 1.1rem 1.3rem;
+    }
+
+    .audience-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: rgba(249, 237, 220, 0.18);
+      display: grid;
+      place-items: center;
+      margin-bottom: 0.4rem;
+      font-size: 1.15rem;
+    }
+
+    .audience-card h3 {
+      font-family: "Playfair Display", serif;
+      margin-bottom: 0.4rem;
+      font-size: 1.1rem;
+    }
+
+    /* ========== FOOTER ========== */
+    .site-footer {
+      background: #120a06;
+      color: #f6e4cf;
+      padding: 1.5rem 0 1.8rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.5rem;
+      align-items: flex-start;
+      font-size: 0.85rem;
+    }
+
+    .footer-brand {
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    .footer-note {
+      color: #e0c5aa;
+      max-width: 22rem;
+    }
+
+    .footer-contact a {
+      color: #f8ddbf;
+      text-decoration: none;
+    }
+
+    .footer-contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* ========== ANIMACIONES DE SCROLL ========== */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 960px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-media {
+        order: -1;
+      }
+
+      .origin-grid,
+      .ingredients-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .formula-grid,
+      .steps-grid,
+      .audience-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 0.4rem;
+        align-items: flex-start;
+      }
+
+      .main-nav {
+        flex-wrap: wrap;
+        gap: 0.6rem 1.2rem;
+        font-size: 0.86rem;
+      }
+
+      .section {
+        padding: 3.4rem 0;
+      }
+
+      .site-header {
+        position: sticky;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER / NAVBAR ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-mark">K’ak’</span>
+        <span class="brand-sub">Chocolate de Guatemala</span>
+      </div>
+
+      <nav class="main-nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#origen">Origen</a>
+        <a href="#formulas">Fórmulas</a>
+        <a href="#ritual">Ritual</a>
+        <a href="#ingredientes">Ingredientes</a>
+        <a href="#para-quien">Para quién</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section id="inicio" class="section hero">
+      <div class="container hero-grid">
+        <div class="hero-text reveal-on-scroll">
+          <p class="hero-tag">
+            Proyecto final · International Chocolate Tasting Course
+          </p>
+          <h1>
+            K’ak’ · Chocolate para bebida
+            <span class="hero-highlight">inspirado en Guatemala</span>
+          </h1>
+          <p class="hero-lead">
+            Una caja con tres fórmulas de chocolate para bebida que conectan
+            <strong>fuego, agua y montaña</strong> a través de ingredientes de
+            origen guatemalteco.
+          </p>
+
+          <p class="hero-lead hero-lead-en">
+            A minimalist collection of three drinking chocolates, rooted in
+            Guatemalan ingredients and volcanic landscapes.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#formulas" class="btn primary">Explorar las fórmulas</a>
+            <a href="#ritual" class="btn ghost">Preparar el ritual</a>
+          </div>
+        </div>
+
+        <div class="hero-media reveal-on-scroll">
+          <!-- Replace 'hero-kak.jpg' with your real image filename -->
+          <div class="hero-image-frame">
+            <img
+              src="hero-kak.jpg"
+              alt="Caja K’ak’ con tres chocolates para bebida"
+            />
+          </div>
+          <p class="hero-caption">
+            Prototipo de la caja K’ak’ · Tres fórmulas de chocolate para bebida
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ORIGEN ===== -->
+    <section id="origen" class="section section-light">
+      <div class="container origin-grid">
+        <div class="origin-text reveal-on-scroll">
+          <h2>Origen</h2>
+          <p>
+            <strong>K’ak’ es una colección de chocolates para bebida</strong>
+            inspirada en la fuerza de los volcanes y la sabiduría ancestral
+            maya.
+          </p>
+          <p>
+            Cada pieza rescata ingredientes originarios de Guatemala, cultivados
+            en territorios donde el cacao ha formado parte de la vida por
+            siglos. Es un ejercicio de
+            <em>degustación consciente</em>, diseñado para dialogar con la
+            geografía, el clima y la memoria.
+          </p>
+          <p class="origin-keywords">
+            Cacao de origen · Ingredientes guatemaltecos · Sabiduría ancestral
+          </p>
+        </div>
+
+        <div class="origin-icons reveal-on-scroll">
+          <div class="origin-icon-card">
+            <div class="icon-circle">🔥</div>
+            <h3>Fuego</h3>
+            <p>La intensidad volcánica que da carácter al cacao y al chile.</p>
+          </div>
+          <div class="origin-icon-card">
+            <div class="icon-circle">💧</div>
+            <h3>Agua</h3>
+            <p>Ríos y lluvias que nutren las plantaciones de cacao y té.</p>
+          </div>
+          <div class="origin-icon-card">
+            <div class="icon-circle">⛰️</div>
+            <h3>Montaña</h3>
+            <p>Suelos de altura donde crecen cardamomo, maíces y especias.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FÓRMULAS ===== -->
+    <section id="formulas" class="section section-dark">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <h2>Las tres fórmulas</h2>
+          <p>
+            Cada tableta está pensada para
+            <strong>una taza ceremonial</strong>: rompe, disuelve y crea tu
+            propio ritual de chocolate.
+          </p>
+        </div>
+
+        <div class="formula-grid">
+          <!-- Card 1: FUEGO -->
+          <article class="formula-card reveal-on-scroll" data-flip>
+            <div class="formula-inner">
+              <div class="formula-face formula-front">
+                <div class="formula-pill">70% cacao</div>
+                <h3>K’ak’ · Fuego</h3>
+                <p class="formula-tagline">Intensidad volcánica</p>
+
+                <ul class="formula-list">
+                  <li>Chile cobanero</li>
+                  <li>Canela</li>
+                  <li>Cardamomo</li>
+                </ul>
+
+                <p class="formula-text">
+                  Chocolate intenso inspirado en el fuego de los volcanes
+                  guatemaltecos.
+                </p>
+                <p class="formula-mood">
+                  Mood: cálido, especiado, ligeramente picante 🔥
+                </p>
+                <p class="formula-hint">
+                  Toca o pasa el cursor para ver notas de degustación.
+                </p>
+              </div>
+
+              <div class="formula-face formula-back">
+                <h4>Notas de degustación</h4>
+                <ul class="formula-notes">
+                  <li>Entrada de cacao intenso y especias cálidas.</li>
+                  <li>
+                    El picante del chile cobanero aparece al final, sin dominar.
+                  </li>
+                  <li>
+                    Ideal para servir solo o con un toque de azúcar mascabado.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: AGUA -->
+          <article class="formula-card reveal-on-scroll" data-flip>
+            <div class="formula-inner">
+              <div class="formula-face formula-front">
+                <div class="formula-pill">60% cacao</div>
+                <h3>Ha’ · Agua</h3>
+                <p class="formula-tagline">Flujo aromático</p>
+
+                <ul class="formula-list">
+                  <li>Té negro chilpeco</li>
+                  <li>Vainilla</li>
+                </ul>
+
+                <p class="formula-text">
+                  Una mezcla suave y aromática que fluye como los ríos que
+                  nutren el cacao.
+                </p>
+                <p class="formula-mood">
+                  Mood: floral, té negro, vainilla dulce 🌊
+                </p>
+                <p class="formula-hint">
+                  Toca o pasa el cursor para ver notas de degustación.
+                </p>
+              </div>
+
+              <div class="formula-face formula-back">
+                <h4>Notas de degustación</h4>
+                <ul class="formula-notes">
+                  <li>Textura sedosa, ideal para preparaciones con leche.</li>
+                  <li>El té negro aporta estructura y profundidad.</li>
+                  <li>
+                    La vainilla redondea el perfil con dulzor aromático.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: MONTAÑA -->
+          <article class="formula-card reveal-on-scroll" data-flip>
+            <div class="formula-inner">
+              <div class="formula-face formula-front">
+                <div class="formula-pill">70% cacao</div>
+                <h3>Witz’ · Montaña</h3>
+                <p class="formula-tagline">Altura y territorio</p>
+
+                <ul class="formula-list">
+                  <li>Cardamomo</li>
+                  <li>Vainilla</li>
+                  <li>Chile cobanero</li>
+                  <li>Maíz morado</li>
+                </ul>
+
+                <p class="formula-text">
+                  Inspirado en las montañas de Acatenango y los maíces de
+                  colores de Guatemala.
+                </p>
+                <p class="formula-mood">
+                  Mood: especias frescas, tostado, dulce-terroso ⛰️
+                </p>
+                <p class="formula-hint">
+                  Toca o pasa el cursor para ver notas de degustación.
+                </p>
+              </div>
+
+              <div class="formula-face formula-back">
+                <h4>Notas de degustación</h4>
+                <ul class="formula-notes">
+                  <li>Cardamomo aromático en nariz, seguido de cacao profundo.</li>
+                  <li>El maíz morado aporta notas tostadas y de cereal.</li>
+                  <li>
+                    Ideal para catas comparativas de origen y textura.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RITUAL / PREPARACIÓN ===== -->
+    <section id="ritual" class="section section-light">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <h2>Cómo preparar tu ritual</h2>
+          <p>
+            Una guía sencilla de tres pasos para servir K’ak’ durante una cata
+            o en casa.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card reveal-on-scroll">
+            <div class="step-number">1</div>
+            <h3>Calienta</h3>
+            <p>
+              Calienta 200–250 ml de agua o leche (animal o vegetal) hasta
+              antes de hervir, idealmente entre 70–80&nbsp;°C para conservar
+              los aromas.
+            </p>
+          </div>
+
+          <div class="step-card reveal-on-scroll">
+            <div class="step-number">2</div>
+            <h3>Derrite</h3>
+            <p>
+              Agrega una pieza de K’ak’ y mezcla hasta disolver. Ajusta dulzor
+              al gusto con azúcar mascabado, panela o sin endulzar para catas
+              técnicas.
+            </p>
+          </div>
+
+          <div class="step-card reveal-on-scroll">
+            <div class="step-number">3</div>
+            <h3>Ritual</h3>
+            <p>
+              Respira, observa el color y la textura. Bebe en pequeños sorbos,
+              comparando las tres fórmulas y tomando notas de aroma, sabor y
+              sensación en boca.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INGREDIENTES / MAPA ===== -->
+    <section id="ingredientes" class="section section-cream">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <h2>Ingredientes de Guatemala</h2>
+          <p>
+            Un mapa sintético de los territorios y cultivos que dan vida a las
+            fórmulas de K’ak’.
+          </p>
+        </div>
+
+        <div class="ingredients-layout">
+          <div class="ingredients-map reveal-on-scroll">
+            <div class="map-placeholder">
+              <span class="map-label">Guatemala</span>
+            </div>
+          </div>
+
+          <div class="ingredients-cards">
+            <article class="ingredient-card reveal-on-scroll">
+              <h3>Cobán · Alta Verapaz</h3>
+              <p>
+                Región húmeda y nubosa donde se cultiva el
+                <strong>chile cobanero</strong> y el
+                <strong>cardamomo</strong>, especias clave en K’ak’ · Fuego y
+                Witz’ · Montaña.
+              </p>
+            </article>
+
+            <article class="ingredient-card reveal-on-scroll">
+              <h3>Acatenango · Zona volcánica</h3>
+              <p>
+                Suelos ricos en ceniza volcánica que favorecen el
+                <strong>cacao de altura</strong> y el
+                <strong>maíz morado</strong>, aportando carácter tostado y
+                estructura.
+              </p>
+            </article>
+
+            <article class="ingredient-card reveal-on-scroll">
+              <h3>Regiones de té y vainilla</h3>
+              <p>
+                El <strong>té negro chilpeco</strong> y la
+                <strong>vainilla</strong> construyen un puente aromático en Ha’
+                · Agua, suavizando el perfil del cacao.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PARA QUIÉN ===== -->
+    <section id="para-quien" class="section section-dark">
+      <div class="container">
+        <div class="section-header section-header-center reveal-on-scroll">
+          <h2>¿Para quién es K’ak’?</h2>
+          <p>
+            Pensado para experiencias de cata, formación sensorial y momentos
+            de pausa con propósito.
+          </p>
+        </div>
+
+        <div class="audience-grid">
+          <div class="audience-card reveal-on-scroll">
+            <div class="audience-icon">✨</div>
+            <h3>Momentos especiales</h3>
+            <p>
+              Ritualizar una taza de chocolate como gesto de celebración y
+              cuidado.
+            </p>
+          </div>
+
+          <div class="audience-card reveal-on-scroll">
+            <div class="audience-icon">🎁</div>
+            <h3>Regalos con historia</h3>
+            <p>
+              Una caja que cuenta el vínculo entre cacao, territorio y cultura
+              guatemalteca.
+            </p>
+          </div>
+
+          <div class="audience-card reveal-on-scroll">
+            <div class="audience-icon">☕</div>
+            <h3>Cursos & catas</h3>
+            <p>
+              Herramienta didáctica para explorar perfiles de sabor,
+              ingredientes y maridajes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-brand">K’ak’ · Chocolate de Guatemala</p>
+        <p class="footer-note">
+          Prototipo de experiencia · Proyecto final para un curso internacional
+          de cata de chocolate.
+        </p>
+      </div>
+
+      <div class="footer-contact">
+        <p>
+          Contacto:
+          <a href="mailto:info@kakchocolate.com">info@kakchocolate.com</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const targetId = link.getAttribute("href");
+        const target = document.querySelector(targetId);
+        if (!target) return;
+
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    // Reveal on scroll
+    const revealElements = document.querySelectorAll(".reveal-on-scroll");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.16,
+        }
+      );
+
+      revealElements.forEach((el) => observer.observe(el));
+    } else {
+      revealElements.forEach((el) => el.classList.add("is-visible"));
+    }
+
+    // Flip behavior for formula cards
+    const flipCards = document.querySelectorAll(".formula-card[data-flip]");
+
+    flipCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        card.classList.toggle("flipped");
+      });
+
+      card.addEventListener("mousedown", (e) => {
+        if (e.detail > 1) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
